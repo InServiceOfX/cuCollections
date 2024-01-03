@@ -92,7 +92,7 @@ template <class Key,
           cuda::thread_scope Scope = cuda::thread_scope_device,
           class KeyEqual           = thrust::equal_to<Key>,
           class ProbingScheme =
-            cuco::experimental::double_hashing<4,  // CG size
+            cuco::experimental::linear_probing<4,  // CG size
                                                cuco::default_hash_function<Key>>,
           class Allocator = cuco::cuda_allocator<cuco::pair<Key, T>>,
           class Storage   = cuco::experimental::storage<1>>
@@ -746,6 +746,8 @@ class static_map {
 
 template <typename Key, typename Value, cuda::thread_scope Scope, typename Allocator>
 class dynamic_map;
+
+namespace legacy {
 
 /**
  * @brief A GPU-accelerated, unordered, associative container of key-value
@@ -2127,6 +2129,7 @@ class static_map {
   slot_allocator_type slot_allocator_{};        ///< Allocator used to allocate slots
   counter_allocator_type counter_allocator_{};  ///< Allocator used to allocate `num_successes_`
 };
+}  // namespace legacy
 }  // namespace cuco
 
 #include <cuco/detail/static_map.inl>
