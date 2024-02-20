@@ -13,7 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #=============================================================================
-cmake_minimum_required(VERSION 3.23.1 FATAL_ERROR)
+
+# Originally,
+#cmake_minimum_required(VERSION 3.23.1 FATAL_ERROR)
+# but Ubuntu Linux 22.04 LTS has as policy 3.22.1 for cmake in its apt
+# repositories.
+cmake_minimum_required(VERSION 3.22.1 FATAL_ERROR)
 
 if(NOT EXISTS ${CMAKE_CURRENT_BINARY_DIR}/CUCO_RAPIDS.cmake)
     file(DOWNLOAD https://raw.githubusercontent.com/rapidsai/rapids-cmake/branch-24.02/RAPIDS.cmake

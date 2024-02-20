@@ -13,7 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #=============================================================================
-cmake_minimum_required(VERSION 3.23.1 FATAL_ERROR)
+# Orignally
+#cmake_minimum_required(VERSION 3.23.1 FATAL_ERROR)
+# but Ubuntu Linux 22.04 LTS has as policy 3.22.1 for cmake in its apt
+# repositories.
+cmake_minimum_required(VERSION 3.22.1 FATAL_ERROR)
 
 CPMAddPackage(
   NAME nvbench
